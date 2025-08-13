@@ -4,8 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #ffeaf1;
-    background-image: radial-gradient(1000px 600px at 90% 10%, #fff1f6 0%, #ffe4ee 45%, #ffd6e6 100%);
+    background-color: pink;
     font-family: 'Quicksand', 'Arial', sans-serif;
     overflow: hidden;
 }
