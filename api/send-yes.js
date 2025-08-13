@@ -17,7 +17,7 @@ module.exports = async function handler(req, res) {
         SMTP_PORT: 465,
         SMTP_SECURE: true,
         SMTP_USER: 'st.sukhe@gmail.com',
-        SMTP_PASS: "wildvuzyhlwrsujz",
+        SMTP_PASS: "udlj lnsk vhxc yndm",
         MAIL_FROM: 'st.sukhe@gmail.com',
         MAIL_TO: 'ab.sukhee@gmail.com',
         SUBJECT: 'YEAHHHHH'
