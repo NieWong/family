@@ -14,8 +14,8 @@ module.exports = async function handler(req, res) {
 
     const INLINE = {
         SMTP_HOST: 'smtp.gmail.com',
-        SMTP_PORT: 465,
-        SMTP_SECURE: true,
+        SMTP_PORT: 587,
+        SMTP_SECURE: false,
         SMTP_USER: 'st.sukhe@gmail.com',
         SMTP_PASS: "udlj lnsk vhxc yndm",
         MAIL_FROM: 'st.sukhe@gmail.com',
