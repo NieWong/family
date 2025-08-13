@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: radial-gradient(1200px 600px at 10% 10%, #ffe7ef 0%, #f9e3e3 40%, #ffd3dc 100%);
+    font-family: 'Quicksand', 'Arial', sans-serif;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 16px 20px;
+}
+
+h1 {
+    font-size: 3.2em;
+    color: #d32f2f;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.05);
+    animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+.subtitle {
+    margin-top: 8px;
+    color: #b33b3b;
+    font-weight: 600;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: inline-flex;
+    gap: 12px;
+}
+
+.yes-button, .no-button {
+    font-size: 1.2em;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.yes-button {
+    background: linear-gradient(135deg, #ff5fa2, #ff9966);
+    color: white;
+    box-shadow: 0 8px 16px rgba(255, 96, 160, 0.3);
+}
+.yes-button:hover { transform: translateY(-2px) scale(1.03); }
+.yes-button:active { transform: translateY(0) scale(0.98); }
+
+.no-button {
+    background: #f44336;
+    color: white;
+    position: relative;
+}
+
+.gif_container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 24px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.heart {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    background: #ff6ea6;
+    transform: rotate(45deg);
+    animation: float 4s ease-in infinite;
+}
+.heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #ff6ea6;
+    border-radius: 50%;
+}
+.heart::before { left: -7px; top: 0; }
+.heart::after { left: 0; top: -7px; }
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(45deg); opacity: 0.9; }
+    100% { transform: translateY(-120vh) rotate(45deg); opacity: 0; }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.08); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.06); }
+    70% { transform: scale(1); }
+}
