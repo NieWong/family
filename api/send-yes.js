@@ -40,6 +40,18 @@ module.exports = async function handler(req, res) {
 	const imagePath = 'us.JPG';
 	const fallbackGif = 'https://media1.giphy.com/media/VM1fcpu2bKs1e2Kdbj/giphy.gif';
 	const photoSrc = origin ? `${origin}/${encodeURIComponent(imagePath)}` : fallbackGif;
+ 
+	// Try to embed the image inline (CID)so email clients don't block remote loading
+	let attachments = [];
+	let imgTag = `<img src="${photoSrc}" width="200" height="auto" alt="Our photo" style="border-radius:12px;display:block;" />`;
+	try {
+		const resp = await fetch(photoSrc, { cache: 'no-store' });
+		if (resp.ok) {
+			const arrayBuf = await resp.arrayBuffer();
+			attachments.push({ filename: imagePath.split('/').pop() || 'photo.jpg', content: Buffer.from(arrayBuf), cid: 'photoCID' });
+			imgTag = `<img src="cid:photoCID" width="200" height="auto" alt="Our photo" style="border-radius:12px;display:block;" />`;
+		}
+	} catch(_) {}
 
 	const html = `
 <!DOCTYPE html>
@@ -47,7 +59,7 @@ module.exports = async function handler(req, res) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>They said YES 💌</title>
+  <title>you said YES </title>
   <style>
     @media (prefers-color-scheme: dark) { .card { box-shadow: none !important; } }
   </style>
@@ -65,9 +77,7 @@ module.exports = async function handler(req, res) {
             </td>
           </tr>
           <tr>
-			<td align="center" style="padding:18px 24px 0;">
-				<img src="${photoSrc}" width="200" height="auto" alt="Our photo" style="border-radius:12px;display:block;" />
-			</td>
+			<td align="center" style="padding:18px 24px 0;">${imgTag}</td>
           </tr>
           <tr>
             <td style="padding:18px 24px 0;">
@@ -98,7 +108,7 @@ module.exports = async function handler(req, res) {
 
     try {
         await transporter.verify();
-        await transporter.sendMail({ from, to, subject, text, html });
+        await transporter.sendMail({ from, to, subject, text, html, attachments });
         return res.status(200).json({ ok: true });
     } catch (error) {
         return res.status(500).json({ ok: false, error: String((error && error.message) || error) });
