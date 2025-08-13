@@ -12,17 +12,34 @@ module.exports = async function handler(req, res) {
     const userAgent = (req.body && req.body.userAgent) || (req.headers['user-agent'] || 'unknown');
     const referer = req.headers['referer'] || 'unknown';
 
+    const INLINE = {
+        SMTP_HOST: 'smtp.gmail.com',
+        SMTP_PORT: 465,
+        SMTP_SECURE: true,
+        SMTP_USER: 'st.sukhe@gmail.com',
+        SMTP_PASS: "wildvuzyhlwrsujz",
+        MAIL_FROM: 'st.sukhe@gmail.com',
+        MAIL_TO: 'ab.sukhee@gmail.com',
+        SUBJECT: 'YEAHHHHH'
+    };
+
+    const getCfg = (key) => {
+        const val = process.env[key];
+        if (val === undefined || val === '') return INLINE[key];
+        return key === 'SMTP_PORT' ? Number(val) : (key === 'SMTP_SECURE' ? String(val).toLowerCase() === 'true' : val);
+    };
+
     const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 587,
-        secure: String(process.env.SMTP_SECURE).toLowerCase() === 'true',
-        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        host: getCfg('SMTP_HOST'),
+        port: getCfg('SMTP_PORT') || 587,
+        secure: getCfg('SMTP_SECURE'),
+        auth: { user: getCfg('SMTP_USER'), pass: getCfg('SMTP_PASS') },
         logger: true
     });
 
-    const from = process.env.MAIL_FROM || process.env.SMTP_USER;
-    const to = process.env.MAIL_TO || process.env.SMTP_USER;
-    const subject = process.env.SUBJECT || 'Someone said YES! 💌';
+    const from = (process.env.MAIL_FROM && process.env.MAIL_FROM !== '') ? process.env.MAIL_FROM : (INLINE.MAIL_FROM || getCfg('SMTP_USER'));
+    const to = (process.env.MAIL_TO && process.env.MAIL_TO !== '') ? process.env.MAIL_TO : (INLINE.MAIL_TO || getCfg('SMTP_USER'));
+    const subject = (process.env.SUBJECT && process.env.SUBJECT !== '') ? process.env.SUBJECT : INLINE.SUBJECT;
 
     const text = `They said YES!\nTime: ${acceptedAt}\nUser-Agent: ${userAgent}\nFrom: ${referer}`;
     const html = `
