@@ -37,7 +37,7 @@ module.exports = async function handler(req, res) {
 	const origin = host ? `${proto}://${host}` : '';
 	const yesUrl = origin ? `${origin}/yes_page.html` : '';
 
-	const imagePath = process.env.MAIL_IMAGE_PATH || 'IMG_0724.JPG';
+	const imagePath = 'us.JPG';
 	const fallbackGif = 'https://media1.giphy.com/media/VM1fcpu2bKs1e2Kdbj/giphy.gif';
 	const photoSrc = origin ? `${origin}/${encodeURIComponent(imagePath)}` : fallbackGif;
 
