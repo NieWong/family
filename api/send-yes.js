@@ -65,7 +65,7 @@ module.exports = async function handler(req, res) {
   </style>
 </head>
 <body style="margin:0;background:#ffeaf1;font-family:Segoe UI,Arial,sans-serif;color:#402e32;">
-  <span style="display:none!important;visibility:hidden;opacity:0;height:0;width:0;overflow:hidden">They said YES! 💖</span>
+  <span style="display:none!important;visibility:hidden;opacity:0;height:0;width:0;overflow:hidden">you said YES! 💖</span>
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#ffeaf1;padding:28px 12px;">
     <tr>
       <td align="center">
@@ -73,7 +73,7 @@ module.exports = async function handler(req, res) {
           <tr>
             <td align="center" style="padding:28px 24px 8px 24px;background:linear-gradient(135deg,#ffd6e6,#fff1f6);">
               <h1 style="margin:0;font-size:26px;color:#d32f2f;">They said <span style="color:#c71c56">YES</span>! 💘</h1>
-              <p style="margin:8px 0 0 0;color:#7b3b4a;font-weight:600;">A little heart just grew three sizes.</p>
+              <p style="margin:8px 0 0 0;color:#7b3b4a;font-weight:600;">mni hairin burhan.</p>
             </td>
           </tr>
           <tr>
@@ -96,7 +96,10 @@ module.exports = async function handler(req, res) {
           </tr>` : ''}
           <tr>
             <td align="center" style="padding:6px 24px 24px;color:#a76b7a;font-size:13px;">
-              Sent with ❤️ by your Valentine page
+              Хязгааргүй хүслийн минь оргил нь чи болхоор. <br>
+              Харах бүрдээ догдолдог сэтгэл ямар сайхан бэ. <br>
+              Хүндлэж хайрлана гэсэн амлалт байдаг болхоор. <br>
+              Хамт өнгөрүүлсэн мөчүүд итгэл даагаад бахдууштай юмаа. <br>
             </td>
           </tr>
         </table>
