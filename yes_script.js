@@ -6,7 +6,7 @@ function spawnHeart() {
     heart.style.zIndex = '1';
     heart.style.pointerEvents = 'none';
     heart.style.animationDuration = 2.6 + Math.random() * 2 + 's';
-    heart.style.background = `hsl(${330 + Math.random()*30}, 85%, ${60 + Math.random()*20}%)`;
+    heart.style.background = `hsl(${340 + Math.random()*10}, 90%, ${78 + Math.random()*10}%)`;
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 5000);
 }
@@ -23,7 +23,7 @@ function burstHearts(count = 36) {
         heart.style.zIndex = '1';
         heart.style.pointerEvents = 'none';
         heart.style.animationDuration = 2.2 + Math.random() * 1.8 + 's';
-        heart.style.background = `hsl(${330 + Math.random()*30}, 85%, ${60 + Math.random()*20}%)`;
+        heart.style.background = `hsl(${340 + Math.random()*10}, 90%, ${78 + Math.random()*10}%)`;
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 5000);
     }

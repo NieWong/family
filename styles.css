@@ -4,7 +4,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: radial-gradient(1200px 600px at 10% 10%, #ffe7ef 0%, #f9e3e3 40%, #ffd3dc 100%);
+    background-color: #ffeaf1;
+    background-image: radial-gradient(1000px 600px at 10% 10%, #fff1f6 0%, #ffe4ee 45%, #ffd6e6 100%);
     font-family: 'Quicksand', 'Arial', sans-serif;
     flex-direction: column;
     overflow: hidden;
@@ -44,7 +45,7 @@ h1 {
 }
 
 .yes-button {
-    background: linear-gradient(135deg, #ff5fa2, #ff9966);
+    background: linear-gradient(135deg, #ff7aa2, #ffb3c1);
     color: white;
     box-shadow: 0 8px 16px rgba(255, 96, 160, 0.3);
 }
@@ -71,7 +72,7 @@ h1 {
     left: 50%;
     width: 14px;
     height: 14px;
-    background: #ff6ea6;
+    background: #ffb4cf;
     transform: rotate(45deg);
     animation: float 4s ease-in infinite;
 }
@@ -80,7 +81,7 @@ h1 {
     position: absolute;
     width: 14px;
     height: 14px;
-    background: #ff6ea6;
+    background: #ffb4cf;
     border-radius: 50%;
 }
 .heart::before { left: -7px; top: 0; }
