@@ -16,7 +16,8 @@ module.exports = async function handler(req, res) {
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT) || 587,
         secure: String(process.env.SMTP_SECURE).toLowerCase() === 'true',
-        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        logger: true
     });
 
     const from = process.env.MAIL_FROM || process.env.SMTP_USER;
@@ -33,6 +34,7 @@ module.exports = async function handler(req, res) {
 </div>`;
 
     try {
+        await transporter.verify();
         await transporter.sendMail({ from, to, subject, text, html });
         return res.status(200).json({ ok: true });
     } catch (error) {
